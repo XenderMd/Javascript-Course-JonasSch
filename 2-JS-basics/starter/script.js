@@ -479,7 +479,7 @@ console.log(john);
  * Coding Challenge 4
  */
 
- var john = new Object ();
+ /*var john = new Object ();
  var mark = new Object ();
 
  john.name='John';
@@ -513,7 +513,173 @@ console.log(john);
  else
  {
      console.log('Both have the same BMI: '+mark.bmi);
+ } */
+
+ /************************************************************************
+  * Loops and iteration
+  */
+/*
+ var john = ['John', 'Smith', 1990, 'designer', false];
+
+  for (var i =0; i<10; i++)
+  {
+      console.log(i);
+  }
+
+ For Loop
+  for (var i =0; i<john.length; i++)
+  {
+      console.log(john[i]);
+  }
+
+ while loop
+  i=0;
+  while(i<john.length)
+  {
+      console.log(john[i]);
+      i++;
+  }
+*/
+
+ // Continue and break statements
+
+ /*
+ for (var i=0; i<john.length; i++)
+ {
+     if (typeof john[i] !=='string') continue;
+     console.log(john[i]);
  }
+
+ for (var i=0; i<john.length; i++)
+ {
+     if (typeof john[i] !=='string') break;
+     console.log(john[i]);
+ }
+ */
+
+
+ /*******************************************************
+  * Coding challenge 5
+  */
+
+/*
+  var john = {
+
+    bills: [124, 48, 268, 180, 42],
+    tips:[],
+    total:[],
+    calcTips: function ()
+    {
+        for (var i=0; i<this.bills.length; i++)
+        {
+            if (this.bills[i]<50)
+            {
+                this.tips[i]=this.bills[i]*0.2;
+            }
+            else if (this.bills[i]>=50 && this.bills[i]<200)
+            {
+                this.tips[i]=this.bills[i]*0.15;
+            }
+            else if(this.bills[i]>=200)
+            {
+                this.tips[i]=this.bills[i]*0.1;
+            }
+        }
+    },
+    calcTotal: function ()
+    {
+        this.calcTips();
+
+        for (var i=0; i< this.tips.length; i++)
+        {
+            this.total[i]=this.bills[i]+this.tips[i];
+        }
+    },
+    
+    dispTips: function ()
+    {
+        console.log(this.tips);
+    },
+
+    dispTotal: function ()
+    {
+        console.log(this.total);
+    }
+  }
+
+  var mark = {
+
+    bills: [77, 375, 110, 45],
+    tips:[],
+    total:[],
+    calcTips: function ()
+    {
+        for (var i=0; i<this.bills.length; i++)
+        {
+            if (this.bills[i]<100)
+            {
+                this.tips[i]=this.bills[i]*0.2;
+            }
+            else if (this.bills[i]>=100 && this.bills[i]<300)
+            {
+                this.tips[i]=this.bills[i]*0.1;
+            }
+            else if(this.bills[i]>=300)
+            {
+                this.tips[i]=this.bills[i]*0.25;
+            }
+        }
+    },
+    calcTotal: function ()
+    {
+        this.calcTips();
+
+        for (var i=0; i< this.tips.length; i++)
+        {
+            this.total[i]=this.bills[i]+this.tips[i];
+        }
+    },
+    
+    dispTips: function ()
+    {
+        console.log(this.tips);
+    },
+
+    dispTotal: function ()
+    {
+        console.log(this.total);
+    }
+  };
+
+  mark.calcTotal();
+  john.calcTotal();
+
+  function CalcTipsAverage (tips)
+  {
+    var tipsAverage=0;
+    for (var i = 0; i<tips.length; i++)
+    {
+        tipsAverage=tips[i]+tipsAverage;
+    }
+    return tipsAverage/tips.length;
+  };
+
+  if (CalcTipsAverage(mark.total) > CalcTipsAverage(john.total))
+  {
+    console.log('Mark: ' + CalcTipsAverage(mark.total)); 
+  }
+  else 
+  {
+    console.log('John: ' + CalcTipsAverage(john.total));   
+  }
+
+  */
+
+  
+
+
+
+
  
 
 
