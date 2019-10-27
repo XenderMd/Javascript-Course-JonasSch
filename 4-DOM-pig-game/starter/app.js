@@ -10,6 +10,8 @@ GAME RULES:
 */
 var scores, roundScore, activePlayer, gamePlaying, doubleCounter, winningScore;
 
+winningScore=100;
+
 init();
 
 
@@ -52,7 +54,7 @@ document.querySelector('.btn-roll').addEventListener('click', function ()
             if (dice1===6 && dice2 ===6)
             {
                 // Add score
-                score[activePlayer]=0;
+                scores[activePlayer]=0;
                 nextPlayer();
             }
             else
