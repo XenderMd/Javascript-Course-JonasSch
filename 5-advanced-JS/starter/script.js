@@ -124,7 +124,7 @@ var jane = Object.create(personProto,
 
     ///////////////////////////////////////////////////////////////////////////
     // Functions returning functions
-
+/*
     function interviewQuestion(job)
     {
         if (job === 'designer')
@@ -157,5 +157,34 @@ var jane = Object.create(personProto,
     designerQuestion('John');
 
     interviewQuestion ('teacher')('Mark');
+
+*/
+
+/////////////////////////////////////////////////////////////////////////////
+// Lecture: IIFE
+
+
+/*function game()
+{
+    var score = math.random()*10;
+    console.log(score >=5);
+}
+game ();*/
+
+(function () 
+{
+    var score = Math.random()*10;
+    console.log(score >=5);   
+}
+) ();
+
+(function (goodluck) 
+{
+    var score = Math.random()*10;
+    console.log(score >=5 - goodluck);   
+}
+) (5);
+
+
 
 
