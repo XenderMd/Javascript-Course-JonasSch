@@ -237,7 +237,7 @@ retirementIceland(1990); */
     }
 */
 
-function interviewQuestion (job)
+/*function interviewQuestion (job)
 {
     return function (name)
     {
@@ -256,7 +256,111 @@ function interviewQuestion (job)
     }
 }
 
-interviewQuestion('teacher')('John');
+interviewQuestion('teacher')('John');*/
+
+
+///////////////////////////////////////////////////////////////////////////
+//// Lecture: Bind, call, apply
+
+/*var john ={
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function ( style, timeOfDay)
+    {
+        if (style ==='formal')
+        {
+            console.log('Good ' + timeOfDay + ', ladies and gentlemen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.' );
+        }
+        else if (style==='friendly')
+        {
+            console.log ('Hey ! What\'s up ? I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '.');
+        }
+    }
+}
+
+var emily=
+{
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
+};
+
+john.presentation('formal', 'morning');
+
+john.presentation.call(emily, 'friendly', 'afternoon');
+
+var johnFriendly = john.presentation.bind(john, 'friendly');
+johnFriendly ('morning');
+johnFriendly ('night');
+
+var emilyFormal = john.presentation.bind(emily, ' formal');
+emilyFormal ('afternoon');*/
+
+///////////////////////////////////////////////////////////////////
+// Coding Challenge
+
+var Question = function (question, answers, correctAnswer)
+{
+    this.question = question;
+    this.answers = answers;
+    this.correctAnswer = correctAnswer;
+};
+
+Question.prototype.askQuestion = function ()
+{
+    console.log(this.question);
+    for (var i=0; i<this.answers.length; i++)
+    {
+        console.log(i + ': ' + this.answers[i]);
+    }
+};
+
+Question.prototype.checkAnswer = function (answer)
+{
+    if(this.correctAnswer=== parseInt(answer))
+    {
+        console.log('Correct ! :)');
+        return true;
+    }
+    else
+    {
+        console.log('Incorrect :/');
+        return false;
+    }
+};
+
+
+var question1 = new Question ('What is the coolest programming lanaguage ?', ['C++', 'JavaScript', 'Python'],0);
+var question2 = new Question ('What is the best RTS Game ?', ['Medieval Total War', 'Rome Total War', 'Attila Total War'], 2);
+var question3 = new Question ('What is the best food ?', ['Salad', 'Hamburger', 'Sushi'], 0);
+var question4 = new Question ('What is the best chipmaker ?', ['Intel', 'AMD', 'ARM'], 1);
+var questions=[question1, question2, question3, question4];
+console.log(question1);
+
+(function(questions)
+{
+    var answer = 'something';
+    var score = 0;
+
+    while(answer!=='exit' && answer!==null)
+    {
+        var questionNum=Math.floor((Math.random()*questions.length));
+        userQuestion=questions[questionNum];
+        userQuestion.askQuestion();
+        answer = prompt(userQuestion.question, 'Answer here ...');
+        (function()
+        {
+            if(userQuestion.checkAnswer(answer))
+            {
+                score++;
+                console.log('Your current score is: '+ score);
+            }            
+            console.log('------------------------------------------------');
+        })();
+    }
+})(questions);
+
 
 
 
