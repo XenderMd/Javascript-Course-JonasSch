@@ -184,3 +184,47 @@ var friends = ['Bob', 'John', 'Mark'];
 new Person ('John').myFriends5(friends);
 */
 
+
+
+/////////////////////////////////////////////////////////
+//// Lecture: Destructuring
+
+// ES 5
+
+//var john = ['john', 26];
+//var name = john [0];
+//var age = john[1];
+
+
+// ES 6
+
+const [name, age] = ['John', 26];
+console.log(name);
+console.log(age);
+
+const obj = {
+    firsName: 'John',
+    lastName: 'Smith'
+}
+
+const{firsName, lastName} = obj;
+console.log(firsName);
+console.log(lastName);
+
+
+const{firsName: a, lastName: b} = obj;
+console.log(a);
+console.log(b);
+
+
+
+function calcAgeRetirement(year)
+{
+    const age = new Date().getFullYear() - year;
+    return [age, 65 - age];
+}
+
+
+const [age2, retirement] = calcAgeRetirement(1990);
+console.log(age2);
+console.log(retirement);
