@@ -302,7 +302,7 @@ console.log(ages.find(cur=>cur>= 18));
 ///////////////////////////////////////////////////////
 // Lecture: Spread operator 
 
-function addFourAges (a,b,c,d)
+/*function addFourAges (a,b,c,d)
 {
     return a+b+c+d;
 }
@@ -330,4 +330,59 @@ const h=document.querySelector('h1');
 const boxes = document.querySelectorAll('.box');
 const all = [h, ...boxes];
 
-Array.from(all).forEach(cur=> cur.style.color='purple');
+Array.from(all).forEach(cur=> cur.style.color='purple');*/
+
+
+///////////////////////////////////////////////////////////////
+// Lecture: Rest parameters
+
+//ES5
+
+/*function isFullAge5()
+{
+    console.log(arguments);
+    var argsArray = Array.prototype.slice.call(arguments);
+    argsArray.forEach(function (cur) 
+    {
+        console.log(2016-cur) >=18;
+    })
+}
+
+isFullAge5(1990, 1999, 1965);
+isFullAge5(1990, 1999, 1965, 2000, 1999);
+
+//ES6
+
+function isFullAge6(...years) // ... the REST parameters
+{
+    years.forEach(cur=>console.log((2016-cur)>=18));
+}
+
+isFullAge6(1990, 1999, 1965);
+*/
+
+/*function isFullAge5(limit)
+{
+    console.log(arguments);
+
+    var argsArray = Array.prototype.slice.call(arguments,1);
+    console.log(argsArray);
+
+    argsArray.forEach(function (cur) 
+    {
+        console.log(2016-cur) >=18;
+    })
+}
+
+isFullAge5(21, 1990, 1999, 1965);
+
+//ES6
+
+function isFullAge6(limit,...years) // ... the REST parameters
+{
+    years.forEach(cur=>console.log((2016-cur)>=limit));
+}
+
+isFullAge6(18, 1990, 1999, 1965);
+*/
+
