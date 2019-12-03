@@ -544,7 +544,7 @@ johnAthlete.wonMedal();
 
 // ES6
 
-class Person6 
+/*class Person6 
 {
     constructor (name, yearOfBirth, job)
     {
@@ -579,13 +579,107 @@ class Athlete6 extends Person6
 const johnAthlete6 = new Athlete6 ('John', 1990, 'swimmer', 3, 10);
 johnAthlete6.wonMedal();
 johnAthlete6.calculateAge();
+*/
 
 
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////  Section 7: Coding challenge
+
+class urbanObject
+{
+    constructor (name = 'Urban Object', buildYear=-1)
+    {
+        this.name=name;
+        this.buildYear = buildYear;
+    }
+}
+
+class Park extends urbanObject
+{
+    constructor (name='Park', buildYear=-1, area=-1, treesNumber=-1)
+    {
+        super(name, buildYear);
+        this.area = area;
+        this.treesNumber = treesNumber;
+        this.treeDensity=treesNumber/area;
+    }
+
+    calculateTreeDensity (area, treesNumber)
+    {
+        if(area>0 && treesNumber >=0)
+        {
+            this.treeDensity=treesNumber/area;
+        }
+    }
+
+    isLargePark ()
+    {
+        return (this.treesNumber>=1000);
+    }
+}
+
+class Street extends urbanObject
+{
+    constructor (name='Street', buildYear=-1, length =-1, classification ='normal')
+    {
+        super (name, buildYear);
+        this.length=length;
+        this.classification=classification;
+    }
+}
+
+class Town
+{
+    constructor ()
+    {
+        this.parks= new Map();
+        this.streets= new Map();
+    }
+
+    insertPark (name, buildYear, area, treesNumber)
+    {
+        this.parks.set(name, new Park(name, buildYear, area, treesNumber));
+    }
+
+    insertStreet (name, buildYear, length, classification)
+    {
+        this.streets.set(name, new Street (name, buildYear, length, classification));
+    }
+
+    calculateParksAgeAverage ()
+    {
+        var ageSum;
+        var average;
+        this.parks.forEach((element, ageSum) => {
+            //console.log(element.buildYear);
+            ageSum=element.buildYear+ageSum;
+            //console.log(ageSum);
+        });
+        console.log(ageSum);
+
+        average=ageSum/this.parks.length;
+        return average;
+    }
+}
 
 
+const Orhei = new Town();
+
+Orhei.insertPark ('Vasile Lupu', 1950, 5000, 10000);
+Orhei.insertPark ('Mihai Eminescu', 1992, 5500, 12000);
+
+console.log(Orhei.calculateParksAgeAverage());
 
 
-
-
+/*const question = new Map();
+question.set('question', 'What is the official name of the latest major JavaScript version ?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3,'ES2015');
+question.set(4,'ES7');
+question.set('answer', 3);
+question.set(true, 'Correct answer :D');
+question.set(false, 'Wrong, please try again !');
+*/
