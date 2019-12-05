@@ -650,17 +650,57 @@ class Town
 
     calculateParksAgeAverage ()
     {
-        var ageSum;
+        var ageSum = 0;
+        var year =  new Date().getFullYear();
         var average;
-        this.parks.forEach((element, ageSum) => {
-            //console.log(element.buildYear);
-            ageSum=element.buildYear+ageSum;
-            //console.log(ageSum);
-        });
-        console.log(ageSum);
 
-        average=ageSum/this.parks.length;
+        this.parks.forEach((element) => {
+            let age = year - element.buildYear;
+            ageSum=ageSum+age;
+        });
+
+        average=ageSum/this.parks.size;
         return average;
+    }
+
+    calculateTotalStreetsLength()
+    {
+        var totalLength = 0;
+        this.streets.forEach((element)=>{
+            totalLength+=element.length;
+        })
+        return totalLength;
+    }
+
+    calculateStreetsAverageLength()
+    {
+        return (this.calculateTotalStreetsLength()/this.streets.size);
+    }
+
+    generateParksReport()
+    {
+        console.log('--------------Parks Report ------------------');
+        console.log(`Our ${this.parks.size} parks have an average of ${this.calculateParksAgeAverage()} years.`);
+        
+        this.parks.forEach((element)=>{
+            console.log (`${element.name} has a tree density of ${element.treeDensity} trees per square m.`);
+        })
+
+        this.parks.forEach((element)=>{
+            if (element.isLargePark)
+            {
+                console.log (`${element.name} has more than 1000 trees.`);
+            }
+        })
+    }
+
+    generateStreetsReport()
+    {
+        console.log('--------------Streets Report ------------------');
+        console.log(`Our ${this.streets.size} streets have a total length of ${this.calculateTotalStreetsLength()}, with an average of ${this.calculateStreetsAverageLength()} m.`); 
+        this.streets.forEach((element)=>{
+            console.log(`${element.name}, built in ${element.buildYear}, is a ${element.classification} street`);
+        })
     }
 }
 
@@ -669,8 +709,16 @@ const Orhei = new Town();
 
 Orhei.insertPark ('Vasile Lupu', 1950, 5000, 10000);
 Orhei.insertPark ('Mihai Eminescu', 1992, 5500, 12000);
+Orhei.insertPark ('Nicolaie Iorga', 1997, 4000, 7000);
+Orhei.insertStreet('Stefan cel Mare', 1940, 1000, 'big');
+Orhei.insertStreet('Vasile Lupu', 1930, 5000, 'huge' );
+Orhei.insertStreet('Ion Creanga', 1960, 2000, 'big' );
+Orhei.insertStreet('Vasile Alexandri', 1970, 200, 'small' );
 
-console.log(Orhei.calculateParksAgeAverage());
+//console.log(Orhei.calculateStreetsAverageLength());
+Orhei.generateParksReport();
+Orhei.generateStreetsReport();
+
 
 
 /*const question = new Map();
