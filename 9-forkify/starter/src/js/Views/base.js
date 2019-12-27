@@ -12,7 +12,8 @@ export const elements = {
 export const elementStrings = {
     loader: 'loader',
     btnincr: 'btn-increase',
-    btndecr: 'btn-decrease'
+    btndecr: 'btn-decrease',
+    btnaddshp: 'recipe__btn--add'
 };
 
 export const renderLoader = parent=>{

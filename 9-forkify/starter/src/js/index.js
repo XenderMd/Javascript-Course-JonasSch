@@ -3,6 +3,7 @@ import Recipe from './models/Recipe';
 import List from './models/List';
 import * as searchView from './Views/searchView';
 import * as recipeView from './Views/recipeView';
+import * as listView from './Views/listView';
 import {elements, renderLoader, clearLoader, elementStrings} from './Views/base';
 
 /* Global state of the app
@@ -96,14 +97,52 @@ const controlRecipe= async ()=>{
 
 }
 
+/**
+ * LIST Conctroller 
+ **/
+
+const controlList = () => {
+    
+    // Create a new list if there is non yet
+    if(!state.list) state.list = new List();
+
+    //Delete the previous shopping list
+    listView.clearList();
+
+    // Add each ingredient to the list
+    state.recipe.ingredients.forEach(el=>{
+        const item = state.list.addItem(el.count, el.unit, el.ingredient);
+        listView.renderItem(item);
+    })
+};
+
 
 ['hashchange', 'load'].forEach(event=> window.addEventListener(event, controlRecipe));
 
 
+// Handle delete and update list item events
+elements.shopping.addEventListener('click', e=> {
+    const id = e.target.closest('.shopping__item').dataset.itemid;
+
+    // Handle the delete event
+    if(e.target.matches('.shopping__delete, .shopping__delete *'))
+    {
+        // Delete from State
+        state.list.deleteItem(id);
+
+        // Delete from UI
+        listView.deleteItem(id)
+    } // Handle the count update
+    else if (e.target.matches('.shopping__count-value'))
+    {
+        const val = parseFloat(e.target.value, 10);
+        state.list.updateCount(id, val);  
+    }
+});
+
 //Handling recipe button clicks
 elements.recipe.addEventListener('click', event=>{
    
-
     if (document.getElementById(elementStrings.btndecr).contains(event.target)){
         //Decrease button is clicked
         state.recipe.updateServings('dec');
@@ -114,7 +153,8 @@ elements.recipe.addEventListener('click', event=>{
         // Increase button is clicked
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
+    } else if (document.getElementById(elementStrings.btnaddshp).contains(event.target))
+    {
+        controlList();
     }
 });
-
-window.l=new List();

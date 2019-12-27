@@ -19,7 +19,11 @@ export const renderItem = item => {
     elements.shopping.insertAdjacentHTML('beforeend', markup);
 };
 
+export const clearList = () => {
+    elements.shopping.innerHTML='';
+}
+
 export const deleteItem = id => {
     const item = document.querySelector(`[data-itemid="${id}"]`);
-    item.parentElement.removeChild(item);
+    if(item) item.parentElement.removeChild(item);
 };
