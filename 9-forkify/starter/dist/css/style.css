@@ -24,6 +24,8 @@ body {
   background-repeat: no-repeat;
   min-height: calc(100vh - 2 * 4vw); }
 
+
+
 .container {
   max-width: 120rem;
   margin: 4vw auto;
@@ -443,7 +445,8 @@ body {
   .shopping__list {
     list-style: none;
     max-height: 77rem;
-    overflow: scroll; }
+    overflow-x: hidden;
+    overflow-y: scroll; }
   .shopping__item {
     display: flex;
     align-items: flex-start;
