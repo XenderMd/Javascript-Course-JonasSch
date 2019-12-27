@@ -2,7 +2,7 @@ import Search from './models/Search';
 import Recipe from './models/Recipe';
 import * as searchView from './Views/searchView';
 import * as recipeView from './Views/recipeView';
-import {elements, renderLoader, clearLoader} from './Views/base';
+import {elements, renderLoader, clearLoader, elementStrings} from './Views/base';
 
 /* Global state of the app
 - Search object
@@ -95,7 +95,23 @@ const controlRecipe= async ()=>{
 
 }
 
-//window.addEventListener('hashchange', controlRecipe);
-//window.addEventListener('load', controlRecipe);
 
 ['hashchange', 'load'].forEach(event=> window.addEventListener(event, controlRecipe));
+
+
+//Handling recipe button clicks
+elements.recipe.addEventListener('click', event=>{
+   
+
+    if (document.getElementById(elementStrings.btndecr).contains(event.target)){
+        //Decrease button is clicked
+        state.recipe.updateServings('dec');
+        recipeView.updateServingsIngredients(state.recipe);
+       
+
+    } else if (document.getElementById(elementStrings.btnincr).contains(event.target)){
+        // Increase button is clicked
+        state.recipe.updateServings('inc');
+        recipeView.updateServingsIngredients(state.recipe);
+    }
+});

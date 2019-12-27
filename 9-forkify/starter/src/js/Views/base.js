@@ -9,7 +9,9 @@ export const elements = {
 };
 
 export const elementStrings = {
-    loader: 'loader'
+    loader: 'loader',
+    btnincr: 'btn-increase',
+    btndecr: 'btn-decrease'
 };
 
 export const renderLoader = parent=>{
