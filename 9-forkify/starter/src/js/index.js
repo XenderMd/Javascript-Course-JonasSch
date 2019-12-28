@@ -16,7 +16,9 @@ import {elements, renderLoader, clearLoader, elementStrings} from './Views/base'
 const state = {};
 
 
-//Search controller
+/**
+ * Search controller
+ **/
 const controlSearch= async ()=>{
     // 1) Get the query from the view
     const query = searchView.getInput(); 
@@ -60,7 +62,10 @@ elements.searchResPages.addEventListener('click', e=>{
 })
 
 
-// Recipe Controller
+/**
+ * Recipe Controller
+ **/
+
 const controlRecipe= async ()=>{
     
     // get ID from URL
@@ -147,7 +152,6 @@ elements.recipe.addEventListener('click', event=>{
         //Decrease button is clicked
         state.recipe.updateServings('dec');
         recipeView.updateServingsIngredients(state.recipe);
-       
 
     } else if (document.getElementById(elementStrings.btnincr).contains(event.target)){
         // Increase button is clicked
