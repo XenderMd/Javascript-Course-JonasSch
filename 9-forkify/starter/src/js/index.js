@@ -99,7 +99,6 @@ const controlRecipe= async ()=>{
             recipeView.renderRecipe(
                 state.recipe,
                 state.likes.isLiked(id));
-                console.log(state.likes.isLiked(id));
 
         } catch {
             alert ('Error processing recipe!');
